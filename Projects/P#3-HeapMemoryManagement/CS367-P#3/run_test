@@ -1,0 +1,18 @@
+#!/bin/bash
+score=0
+for i in trace1 trace2 trace3 trace4 trace5 
+do 
+    echo -ne "#### testing" $i "\n"
+    mdriver $i > $i.out
+    mdriver_ref $i > $i.out_expected
+    p=`diff $i.out $i.out_expected | wc -l`
+    if [ $p == "0" ]
+        then
+            let "score += 1"
+            echo -e "\e[01;32mpassed\e[00m"
+        else        
+            echo -e "\e[00;31mfailed\e[00m"
+    fi
+    rm $i.out $i.out_expected
+done
+echo "Number of correct tests (out of 5): $score" 

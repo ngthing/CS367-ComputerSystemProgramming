@@ -183,8 +183,7 @@ int addOK(int x, int y) {
 int allEvenBits(int x) {
   //Create a mask 0x55555555 using shifting and addition) 
   int legalMin = (((0x55 + (0x55<<8))+ (0x55<<16))+(0x55<<24));
-  //int x has all even bits as 1 iff x&legalMin = legalMin. 
-  //If x&legalMin = legalMin, then ~x&legalMin = 0. 
+  //int x has all even bits as 1 iff ~x&legalMin = 0. 
   //Remember that !0 return 1, while !(anything else)=0. 
   return !(~x&legalMin);
 }

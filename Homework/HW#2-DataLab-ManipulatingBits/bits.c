@@ -170,7 +170,7 @@ int addOK(int x, int y) {
   int a = x>>31;
   int b = y>>31;
   int c = z>>31;
-  return (!!(a^b))|((!(a^c))&(!(b^c)));
+  return !!((a^b)|!(a^c));
 
 }
 /* 
